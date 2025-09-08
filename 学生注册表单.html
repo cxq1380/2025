@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学生注册表单</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<style>
+			#deng{
+				width: 31.25rem;
+				height: 40rem;;
+				background-color: white;
+				margin: 0 auto;
+				margin-top: 6.875rem;
+				border-radius: 10px;
+				border: 3px solid;
+			}
+			.form-line{
+				width: 29rem;
+				height: 2.5rem;
+				
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="deng">
+			<form onsubmit="check()" id="form" style="margin-left: 1.25rem;">
+			<h2 style="text-align: center;">学生注册表单</h2>
+			姓名
+			<br>
+			<input id="name"  class="form-line" type="text" placeholder="请输入您的姓名"/>
+			<br>
+			<br>
+			手机号
+			<br>
+			<input  id="number" class="form-line" type="text" placeholder="请输入11位手机号"/>
+			<br>
+			<br>
+			邮箱
+			<br>
+			<input id="email"  name="email" class="form-line" type="email" placeholder="可选，如student@school.com" required/>
+			<br>
+			<br>
+			密码
+			<br>
+			<input id="mima"  class="form-line" type="text" placeholder="至少6位，包含字母和数字"/>
+			<br>
+			<br>
+			确认密码
+			<br>
+			<input id="queren"  class="form-line" type="text" placeholder="请再次输入密码"/>
+			<br>
+			<br>
+			<input class="btn btn-primary" style="width: 29rem;" type="submit" value="注册"/>
+			</form>
+		</div>
+	</body>
+	<script>
+		let forminp=document.getElementById('form');
+		let nameinp=document.getElementById('name');
+		let numberinp=document.getElementById('number')
+		let mimainp=document.getElementById('mima')
+		let quereninp=document.getElementById('queren')
+		function check(){
+			let hn=/^[\u4e00-\u9fa5]{2,}$/
+		if(!hn.test(nameinp.value)){
+			alert("姓名不正确")
+			return false;
+		}
+		let reg=/^1[3-9]\d{9}$/;
+		if(!reg.test(numberinp.value)){
+			alert("电话不正确")
+			return false;
+		}
+		let bu= /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+		if(!bu.test(mimainp.value)){
+			alert("密码不正确")
+			return false;
+		}
+		if(!quereninp.value!=mimainp.value){
+			alert("两次密码不一致")
+			return false;
+		}
+		alert("注册成功")
+		}
+	</script>
+</html>
